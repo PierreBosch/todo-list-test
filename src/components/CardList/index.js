@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiPlus } from 'react-icons/fi';
+// import { FiPlus } from 'react-icons/fi';
 import { Container, GridList } from './styles';
 import CardItem from '../CardItem';
 import PropagateLoader from "react-spinners/PropagateLoader";
