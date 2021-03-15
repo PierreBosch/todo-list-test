@@ -14,7 +14,7 @@ function Home({ changeTheme }) {
   const [description, setTaskDescription] = useState("");
   const [topic, setTaskTopic] = useState("");
 
-  const { addTask, tasks, filterTasks, filterOption} = useTask();
+  const { addTask, tasks, filterTasks, filterOption, doneCounter, todoCounter} = useTask();
   const theme = useContext(ThemeContext);
 
   function handleSubmit() {
@@ -42,18 +42,18 @@ function Home({ changeTheme }) {
             <div className="form-control">
               <label className="label-control" autoComplete="off" htmlFor="task-description">Descrição da tarefa</label>
               <div className="input-container">
-                <input id="task-description" onChange={e => setTaskDescription(e.target.value)} placeholder="Dê uma descrição da sua tarefa a fazer" type="text"/>
+                <input value={description} id="task-description" onChange={e => setTaskDescription(e.target.value)} placeholder="Dê uma descrição da sua tarefa a fazer" type="text"/>
               </div>
             </div>
 
             <div className="form-control">
               <label htmlFor="task-topic" autoComplete="off">Tópico</label>
               <div className="input-container">
-                <input onChange={e => setTaskTopic(e.target.value)} placeholder="Ex: #ProjectUI" id="task-topic" type="text"/>
+                <input value={topic} onChange={e => setTaskTopic(e.target.value)} placeholder="Ex: #ProjectUI" id="task-topic" type="text"/>
               </div>
             </div>
 
-            <button onClick={() => handleSubmit()}>
+            <button disabled={description === "" || topic === ""} onClick={() => handleSubmit()}>
               Adicionar
             </button>
           </div>
@@ -62,9 +62,9 @@ function Home({ changeTheme }) {
             <span>Filtro:</span>
 
             <FilterList>
-              <FilterOption backgroundColor={theme.colors.allColor} onClick={() => filterTasks(null,null)} selected={filterOption === null}>Todas <span>8</span></FilterOption>
-              <FilterOption backgroundColor={theme.colors.doneColor} onClick={() => filterTasks(true, "done")} selected={filterOption === "done"}>Feitas <span>3</span></FilterOption>
-              <FilterOption backgroundColor={theme.colors.todoColor} onClick={() => filterTasks(false, "todo")} selected={filterOption === "todo"}>A Fazer <span>5</span></FilterOption>
+              <FilterOption backgroundColor={theme.colors.allColor} onClick={() => filterTasks(null,null)} selected={filterOption === null}>Todas <span>{ doneCounter + todoCounter }</span></FilterOption>
+              <FilterOption backgroundColor={theme.colors.doneColor} onClick={() => filterTasks(true, "done")} selected={filterOption === "done"}>Feitas <span>{ doneCounter }</span></FilterOption>
+              <FilterOption backgroundColor={theme.colors.todoColor} onClick={() => filterTasks(false, "todo")} selected={filterOption === "todo"}>A Fazer <span>{ todoCounter }</span></FilterOption>
             </FilterList>
           </div>
         </Header>

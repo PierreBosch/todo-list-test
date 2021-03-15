@@ -1,5 +1,19 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { transparentize } from 'polished';
+
+const slide = keyframes`
+  0% { 
+      left: -300px;
+      opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% { 
+      left: 0; 
+      opacity: 1;
+  }
+`
 
 export const Card = styled.li`
     width: 100%;
@@ -11,6 +25,7 @@ export const Card = styled.li`
     background: ${props => `linear-gradient(270deg, ${props.theme.colors.gradientSecondary} 23.54%,${props.theme.colors.gradientPrimary} 104.01%)`};
     box-shadow: 0px 2px 3px ${props => props.theme.colors.shadowCard};
     position: relative;
+    animation: ${slide} 400ms 0s both;
 
     img {
         box-shadow: 0px 0px 6px 5px ${props => props.theme.colors.avatarShadow};

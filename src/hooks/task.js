@@ -5,23 +5,39 @@ const TaskContext = createContext();
 const TaskProvider = ({ children }) => {
   const initialTasks = [];
   const [tasks, setTasks] = useState(initialTasks);
+  const [loading, setLoading] = useState(true);
+  const [todoCounter, setTodoCounter] = useState(0);
+  const [doneCounter, setDoneCounter] = useState(0);
   const [filterOption, setFilterOption] = useState(null);
 
   useEffect(() => {
     api.get(`/tasks`)
       .then(response => {
         setTasks(response.data.tasks)
+        setLoading(false)
       });
   }, []);
 
+  useEffect(() => {
+    api.get(`/tasks`)
+    .then(response => {
+      setDoneCounter(response.data.tasks.filter(task => task.done).length);
+      setTodoCounter(response.data.tasks.filter(task => !task.done).length);
+    });
+  }, [tasks]);
+
   function filterTasks(done = null, filterDescription) {
+    setLoading(true)
     const filter = done !== null ? `?done=${done}` : ``;
     setFilterOption(filterDescription);
-    
-    api.get(`/tasks${filter}`)
+
+    setTimeout(() => {
+      api.get(`/tasks${filter}`)
       .then(response => {
         setTasks(response.data.tasks)
+        setLoading(false)
       });
+    },500)
   }
 
   function addTask(task) {
@@ -67,7 +83,7 @@ const TaskProvider = ({ children }) => {
   }
 
   return (
-    <TaskContext.Provider value={{ tasks, addTask, deleteTask, updateTask, changeTaskStatus, filterTasks, filterOption }}>
+    <TaskContext.Provider value={{ tasks, addTask, deleteTask,doneCounter, todoCounter, updateTask, changeTaskStatus, filterTasks, filterOption, loading }}>
       {children}
     </TaskContext.Provider>
   );

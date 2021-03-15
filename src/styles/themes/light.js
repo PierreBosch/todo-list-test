@@ -7,6 +7,8 @@ export default {
         backgroundSecondary: "#DBF9D9",
         backgroundContent: "#ffffff",
         backgroundHeader: "#4DA747",
+        scrollbarTrack: "#DBF9D9",
+        scrollbar: "#3C7A38",
 
         headerTitleColor: "#ffffff",
 

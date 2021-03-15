@@ -134,6 +134,11 @@ export const Header = styled.header`
             transition: all 200ms ease-in-out;
             align-self: flex-end;
 
+            :disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+
             :hover {
                 background: ${props => darken(0.1, props.theme.colors.buttonPrimary)};
             }

@@ -6,6 +6,8 @@ export default {
         backgroundSecondary: "#202024",
         backgroundContent: "#202024",
         backgroundHeader: "#121214",
+        scrollbarTrack: "#202024",
+        scrollbar: "#121214",
 
         headerTitleColor: "#ffffff",
 
