@@ -3,14 +3,14 @@ import { transparentize } from 'polished';
 
 const slide = keyframes`
   0% { 
-      left: -300px;
+      bottom: -300px;
       opacity: 0;
   }
   50% {
     opacity: 0.5;
   }
   100% { 
-      left: 0; 
+      bottom: 0; 
       opacity: 1;
   }
 `
