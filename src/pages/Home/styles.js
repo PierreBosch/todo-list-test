@@ -66,11 +66,17 @@ export const Content = styled.div`
    background: ${props => props.theme.colors.backgroundContent};
    box-shadow: 0px 4px 50px ${props => props.theme.colors.black};
    border-radius: 14px;
+
+   @media(max-width: 800px) {
+       width: 100%;
+       min-height: 100vh;
+       border-radius: 0;
+   }
 `;
 
 export const Header = styled.header`
     width: 100%;
-    height: 315px;
+    min-height: 315px;
     background: ${props => props.theme.colors.backgroundHeader};
     border-radius: 14px 14px 0 0;
     padding: 40px;
@@ -111,6 +117,15 @@ export const Header = styled.header`
                 svg {
                     stroke: #fff;
                 }
+            }
+        }
+
+        @media(max-width: 475px) {
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            
+            h1 {
+                margin-top: 24px;
             }
         }
     }
@@ -190,6 +205,32 @@ export const Header = styled.header`
                 }
             }
         }
+
+        @media(max-width: 755px) {
+            flex-direction: column;
+            margin-top: 24px;
+
+            button {
+                width: 100%;
+                align-self: center;
+                margin-top: 24px;
+                margin-bottom: 16px;
+            }
+
+            div.form-control {
+                width: 100%;
+                max-width: 100%;
+                margin-top: 24px;
+
+                div.input-container {
+                    max-width: 100%;
+                }
+
+                :nth-child(2) {
+                    width: 100%;
+                }
+            }
+        }
     }
 
     div#filter {
@@ -242,6 +283,36 @@ export const Header = styled.header`
                     position: absolute;
                     right: -24px;
                     top: -10px;
+                    z-index: 1000;
+                }
+            }
+        }
+
+        @media(max-width: 455px) {
+            > span {
+                margin-right: 0;
+            }
+
+            ${FilterList} {
+                ${FilterOption} {
+                    margin-left: 8px;
+                }
+            }
+        }
+
+        @media(max-width: 415px) {
+            flex-direction: column;
+            margin: 8px 0;
+
+            > span {
+                align-self: flex-start;
+            }
+
+            ${FilterList} {
+                flex-direction: column;
+                ${FilterOption} {
+                    margin-top: 8px;
+                    margin-left: 0;
                 }
             }
         }
