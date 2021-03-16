@@ -21,7 +21,7 @@ export const Container = styled.div`
     flex-direction: column;
     margin-right: 16px;
     position: relative;
-    
+
     + div {
         margin-top: ${props => props.noMargin ? '0' : '24px' };
     }
@@ -50,6 +50,10 @@ export const Container = styled.div`
         display: flex;
         align-items: center;
         padding: 16px;
+
+        span {
+          color: ${props => props.theme.description === 'dark' ? props.theme.colors.label : props.theme.colors.labelDark};
+        }
 
         :focus-within {
             background: ${props => darken(0.03, props.theme.colors.inputFocusBackground)};
