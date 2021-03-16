@@ -10,6 +10,7 @@ import darkleftElement from '../../assets/elements/left-element.svg';
 import { FiMoon, FiSun } from 'react-icons/fi';
 import { useTask } from '../../hooks/task';
 import GithubUser from '../../components/GithubUser';
+import Modal from '../../components/Modal';
 
 function Home({ changeTheme }) {
   const [description, setTaskDescription] = useState("");
@@ -19,7 +20,7 @@ function Home({ changeTheme }) {
   const theme = useContext(ThemeContext);
 
   function handleSubmit() {
-    addTask({ description, topic, status: "todo", author: "Pierre Boschetto" });
+    addTask({ description, topic });
     setTaskDescription("");
     setTaskTopic("");
   }

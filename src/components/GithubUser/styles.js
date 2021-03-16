@@ -2,14 +2,14 @@ import { darken } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  display: flex;
-  width: 100%;
-  max-width: 550px;
-  margin: 0 auto;
-  min-height: inherit;
-  align-items: center;
+    display: flex;
+    width: 100%;
+    max-width: 550px;
+    margin: 0 auto;
+    min-height: inherit;
+    align-items: center;
 
-  button {
+    button {
         color: ${props => props.theme.colors.buttonColor};
         background: ${props => props.theme.colors.buttonPrimary};
         border: 1px solid ${props => props.theme.colors.buttonBorderColor};

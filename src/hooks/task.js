@@ -75,10 +75,20 @@ const TaskProvider = ({ children }) => {
   }
 
   function updateTask(task) {
+    setLoading(true);
     api.put(`/tasks/${task.id}`, {...task})
     .then(response => {
-      setTasks([...tasks, response.data.task]);
+      const tasksUpdated = tasks.map(task => {
+        if(task.id === response.data.task.id) {
+          return response.data.task;
+        }
+
+        return task;
+      });
+
+      setTasks(tasksUpdated);
     });
+    setLoading(false);
   }
 
   function changeTaskStatus(id) {
@@ -103,7 +113,7 @@ const TaskProvider = ({ children }) => {
   }
 
   return (
-    <TaskContext.Provider value={{step, error, setStep, tasks, getGithubUser, githubUser, addTask, deleteTask,doneCounter, todoCounter, updateTask, changeTaskStatus, filterTasks, filterOption, loading }}>
+    <TaskContext.Provider value={{step, error, setError, setStep, tasks, getGithubUser, githubUser, addTask, deleteTask,doneCounter, todoCounter, updateTask, changeTaskStatus, filterTasks, filterOption, loading }}>
       {children}
     </TaskContext.Provider>
   );

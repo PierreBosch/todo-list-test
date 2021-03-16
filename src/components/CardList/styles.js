@@ -19,43 +19,6 @@ export const Container = styled.div`
     justify-content: center;
   }
 
-  button {
-    margin-top: 32px;
-    font-weight: 600;
-    color: ${props => props.theme.colors.buttonColor};
-    border-radius: 50px;
-    border: none;
-    padding: 24px 32px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: ${props => props.theme.colors.buttonPrimary};
-    transition: all 200ms ease-in-out;
-
-    :hover {
-        background: ${props => darken(0.1, props.theme.colors.buttonPrimary)};
-
-        svg {
-            animation: out 500ms;
-        }
-    }
-
-    @keyframes in {
-        from   { -webkit-transform: rotate(0deg); }
-        to { -webkit-transform: rotate(90deg);}
-    }
-
-    @keyframes out {
-        0%   { -webkit-transform: rotate(90deg); }
-        100% { -webkit-transform: rotate(0deg); }
-    }
-
-    svg {
-        animation: in 500ms;
-        margin-left: 4px;
-    }
-  }
 
   @media(max-width: 475px) {
     padding: 0;

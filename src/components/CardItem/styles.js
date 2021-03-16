@@ -17,6 +17,7 @@ const slide = keyframes`
 
 export const Card = styled.li`
     flex: 1;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: space-between;
