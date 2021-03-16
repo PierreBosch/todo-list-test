@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import api from '../services/api';
+import axios from 'axios';
 const TaskContext = createContext();
 
 const TaskProvider = ({ children }) => {
@@ -9,6 +10,18 @@ const TaskProvider = ({ children }) => {
   const [todoCounter, setTodoCounter] = useState(0);
   const [doneCounter, setDoneCounter] = useState(0);
   const [filterOption, setFilterOption] = useState(null);
+  const [githubUser, setGithubUser] = useState(null);
+  const [error, setError] = useState(null);
+  const [step, setStep] = useState(1);
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('@Tasks:githubUser'));
+
+    if(user !== null) {
+      setGithubUser(user);
+      setStep(2);
+    }
+  }, []);
 
   useEffect(() => {
     api.get(`/tasks`)
@@ -19,12 +32,25 @@ const TaskProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    api.get(`/tasks`)
-    .then(response => {
-      setDoneCounter(response.data.tasks.filter(task => task.done).length);
-      setTodoCounter(response.data.tasks.filter(task => !task.done).length);
-    });
-  }, [tasks]);
+    if(step === 2) {
+      api.get(`/tasks`)
+      .then(response => {
+        setDoneCounter(response.data.tasks.filter(task => task.done).length);
+        setTodoCounter(response.data.tasks.filter(task => !task.done).length);
+      });
+    }
+  }, [tasks, step]);
+
+  function getGithubUser(username) {
+     setError(null);
+     axios.get(`https://api.github.com/users/${username}`)
+      .then(response => {
+        const user = { name: response.data.login, avatar_url: response.data.avatar_url };
+        localStorage.setItem('@Tasks:githubUser', JSON.stringify(user));
+        setGithubUser(user);
+        setStep(2);
+      }).catch(() => setError({type: 'githubuser', message: 'Usuário não encontrado'}));
+  }
 
   function filterTasks(done = null, filterDescription) {
     setLoading(true)
@@ -41,23 +67,18 @@ const TaskProvider = ({ children }) => {
   }
 
   function addTask(task) {
-
-    api.post('/tasks', {...task})
+    console.log(githubUser.login);
+    api.post('/tasks', {...task, avatar_url: githubUser.avatar_url, author: githubUser.name})
       .then(response => {
-
-        setTasks([...tasks, response.data.task]);
+        setTasks([response.data.task, ...tasks]);
       });
-
-    setTasks([...tasks, task]);
   }
 
   function updateTask(task) {
-   
     api.put(`/tasks/${task.id}`, {...task})
     .then(response => {
       setTasks([...tasks, response.data.task]);
     });
-
   }
 
   function changeTaskStatus(id) {
@@ -67,7 +88,6 @@ const TaskProvider = ({ children }) => {
         if(task.id === response.data.task.id) {
           return  response.data.task;
         }
-
         return task;
       })
 
@@ -77,13 +97,13 @@ const TaskProvider = ({ children }) => {
 
   function deleteTask(id) {
     api.delete(`/tasks/${id}`)
-    .then(response => {
+    .then(() => {
       setTasks(tasks.filter(task => id !== task.id));
     });
   }
 
   return (
-    <TaskContext.Provider value={{ tasks, addTask, deleteTask,doneCounter, todoCounter, updateTask, changeTaskStatus, filterTasks, filterOption, loading }}>
+    <TaskContext.Provider value={{step, error, setStep, tasks, getGithubUser, githubUser, addTask, deleteTask,doneCounter, todoCounter, updateTask, changeTaskStatus, filterTasks, filterOption, loading }}>
       {children}
     </TaskContext.Provider>
   );

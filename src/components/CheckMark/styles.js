@@ -30,6 +30,12 @@ export const Container = styled.div`
         :hover {
             background-color: ${props => props.theme.colors.checkMarkBackground};
         }
+
+        @media(max-width: 640px) {
+            :hover {
+                background-color: ${props => props.theme.colors.checkMarkDisableBackground};
+            }
+        }
     }
     
     .checkbox span:first-child svg {

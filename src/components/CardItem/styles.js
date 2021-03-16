@@ -33,6 +33,8 @@ export const Card = styled.li`
         border-radius: 50px;
         border: 1px solid ${props => props.theme.colors.avatarBorderColor};
         opacity: ${props => props.done ? 0.2 : 1};
+        width: 30px;
+        height: 30px;
     }
     
     ::before {
@@ -79,6 +81,6 @@ export const Card = styled.li`
     }
 
     @media(max-width: 670px) {
-        padding: 8px;
+        padding: 8px 16px;
     }
 `;
