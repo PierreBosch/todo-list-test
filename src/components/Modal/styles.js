@@ -137,15 +137,15 @@ export const Container = styled.div`
                 margin-right: 8px;
             }
 
-            :disabled {
-                opacity: 0.5;
-                cursor: not-allowed;
-            }
-
             &:not(:disabled):hover {
                 background: ${props => lighten(0.1, props.theme.colors.buttonPrimary)};
                 border-color: ${props => lighten(0.1, props.theme.colors.buttonPrimary)};
                 color: ${props => props.theme.colors.modalButtonOutlineHoverColor};
+            }
+
+            :disabled {
+                opacity: 0.9;
+                cursor: not-allowed;
             }
         }
 
@@ -153,7 +153,7 @@ export const Container = styled.div`
             border: 1px solid #e24343;
             margin-right: auto;
             background: #e24343;
-            
+
             &:not(:disabled):hover {
                 background: ${lighten(0.1, "#e24343")};
                 border-color: ${lighten(0.1, "#e24343")};

@@ -50,26 +50,26 @@ function Modal({ task, modalIsOpen, closeModal, deleteTask, updateTask }) {
             </button>
             <section className="modal-area">
                 <form onSubmit={(e) => handleSubmit(e)} id="form1">
-                    <TextInput 
+                    <TextInput
                         label="Descrição da tarefa"
-                        value={description} 
+                        value={description}
                         name="description"
-                        onChange={e => setTaskDescription(e.target.value)} 
-                        placeholder="Dê uma descrição da sua tarefa a fazer" 
+                        onChange={e => setTaskDescription(e.target.value)}
+                        placeholder="Dê uma descrição da sua tarefa a fazer"
                     />
 
-                    <TextInput 
+                    <TextInput
                         label="Tópico"
-                        value={topic} 
+                        value={topic}
                         name="topic"
-                        onChange={e => setTaskTopic(e.target.value)} 
-                        placeholder="Ex: #ProjectUI" 
+                        onChange={e => setTaskTopic(e.target.value)}
+                        placeholder="Ex: #ProjectUI"
                     />
                 </form>
             </section>
 
             <footer className="modal-footer">
-                <button type="submit" form="form1">
+                <button disabled={description === "" || topic === ""} type="submit" form="form1">
                     CONFIRMAR ALTERAÇÕES
                 </button>
 
