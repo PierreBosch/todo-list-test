@@ -53,6 +53,7 @@ const TaskProvider = ({ children }) => {
 
   function logout() {
     localStorage.removeItem('@Tasks:githubUser');
+    setTasks([]);
     setStep(1);
   }
 
