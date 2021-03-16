@@ -51,8 +51,6 @@ export const Container = styled.div`
     
     .checkbox span:first-child:before {
         content: "";
-        width: 100%;
-        height: 100%;
         background: ${props => props.theme.colors.checkMarkBackground};
         display: block;
         transform: scale(0);

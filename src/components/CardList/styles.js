@@ -56,6 +56,11 @@ export const Container = styled.div`
         margin-left: 4px;
     }
   }
+
+  @media(max-width: 475px) {
+    padding: 0;
+    margin-top: 32px;
+  }
 `;
 
 export const GridList = styled.ul`
@@ -88,5 +93,12 @@ export const GridList = styled.ul`
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
+  }
+
+  @media(max-width: 670px) {
+    height: 100%;
+    min-height: 500px;
+    overflow-y: visible;
+    grid-gap:16px;
   }
 `;

@@ -16,7 +16,7 @@ const slide = keyframes`
 `
 
 export const Card = styled.li`
-    width: 100%;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -76,5 +76,9 @@ export const Card = styled.li`
                 font-size: 14px;
             }
         }
+    }
+
+    @media(max-width: 670px) {
+        padding: 8px;
     }
 `;

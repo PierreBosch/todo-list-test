@@ -317,5 +317,9 @@ export const Header = styled.header`
             }
         }
     }
+
+    @media(max-width: 475px) {
+        padding: 40px 24px;
+    }
 `;
 
