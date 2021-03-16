@@ -28,9 +28,9 @@ The objective of the project is to create a web application so that it is possib
 
 In the docs, you can see the [Installation](./docs/Installation.md) session to get started this project in your local machine, and also see the endpoints in [Rest API](./docs/RestAPI.md) session.
 
-## Technologies
+## Access API Repository
 
-To develop this application, a monorepo was created with [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) to manage the Server and Client sides.
+The access link to the [API Project](https://github.com/PierreBosch/todo-vialaser-api)
 
 ### Core
 
@@ -54,10 +54,6 @@ To develop this application, a monorepo was created with [Yarn Workspaces](https
 ### UI Design Interface
 
 - [Figma](https://www.figma.com/proto/M7ZmtBomv0IVuSmQCYLzTW/To-do?node-id=76%3A0&scaling=min-zoom)
-
-## License
-
-The app's source code is made available under the [MIT license](LICENSE). Some of the dependencies are licensed differently, with the BSD license, for example.
 
 ## Contact
 
