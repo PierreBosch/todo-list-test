@@ -49,7 +49,7 @@ function Modal({ task, modalIsOpen, closeModal, deleteTask, updateTask }) {
                 <FiX size={24} />
             </button>
             <section className="modal-area">
-                <form onSubmit={(e) => handleSubmit(e)} id="form-update-task">
+                <form onSubmit={(e) => handleSubmit(e)} id="form1">
                     <TextInput 
                         label="Descrição da tarefa"
                         value={description} 
@@ -69,7 +69,7 @@ function Modal({ task, modalIsOpen, closeModal, deleteTask, updateTask }) {
             </section>
 
             <footer className="modal-footer">
-                <button type="submit" form="form-update-task">
+                <button type="submit" form="form1">
                     CONFIRMAR ALTERAÇÕES
                 </button>
 
