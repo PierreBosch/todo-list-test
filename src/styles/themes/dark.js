@@ -48,6 +48,8 @@ export default {
         checkMarkBackground: "#0B753C",
         checkMarkSvgColor: "#ffffff",
         checkMarkDisableSvgColor: "#323433",
+        
+        loadingColor: "#000000",
 
         modalBackgroundColor: "rgb(32, 32, 36)",
         modalTitleColor: "#ffffff",

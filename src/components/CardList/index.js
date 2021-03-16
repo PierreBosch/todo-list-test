@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-// import { FiPlus } from 'react-icons/fi';
+import React, { useState, useContext } from 'react';
 import { Container, GridList } from './styles';
 import CardItem from '../CardItem';
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { useTask } from '../../hooks/task';
 import Modal from '../Modal';
+import { ThemeContext } from "styled-components";
 
 function CardList({ tasks }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [task, setTask] = useState(null);
   const { loading, deleteTask, updateTask } = useTask();
+  const theme = useContext(ThemeContext);
 
   function handleOpenModal(task) {
     setTask(task);
@@ -32,7 +33,7 @@ function CardList({ tasks }) {
       )
     ):(
       <div id="loading">
-        <PropagateLoader loading={true} size={20} />
+        <PropagateLoader color={theme.colors.loadingColor} loading={true} size={20} />
       </div>
     )}
   </Container>;

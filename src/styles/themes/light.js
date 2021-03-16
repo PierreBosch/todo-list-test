@@ -57,5 +57,6 @@ export default {
         modalButtonColor: "#ffffff",
         modalCloseBackground: '#7C79EB',
         sectionSeparatorColor: "#BCE9B9",
+        loadingColor: "#8986F8",
     }
 };
