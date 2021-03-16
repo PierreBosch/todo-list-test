@@ -16,14 +16,14 @@ export const Input = styled.input`
 `;
 
 export const Container = styled.div`
-    width: 100%;
+    width: ${props => `${props.width}%`};
     display: flex;
     flex-direction: column;
     margin-right: 16px;
     position: relative;
     
     + div {
-        margin-top: 24px;
+        margin-top: ${props => props.noMargin ? '0' : '24px' };
     }
 
     > span{
@@ -55,6 +55,13 @@ export const Container = styled.div`
             background: ${props => darken(0.03, props.theme.colors.inputFocusBackground)};
             border: 1px solid ${props => props.theme.colors.inputOutline};
             transition: all 200ms ease-in-out;
+        }
+    }
+
+    @media(max-width: 768px) {
+        width: 100%;
+        + div {
+            margin-top: 24px;
         }
     }
 `;

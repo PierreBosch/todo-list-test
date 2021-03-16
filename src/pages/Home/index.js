@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import vialaserLogo from '../../assets/images/logo.png';
 import CardList from '../../components/CardList';
-import { Container, Content, Header, FilterOption, FilterList, Input } from './styles';
+import { Container, Content, Header, FilterOption, FilterList } from './styles';
 import { ThemeContext } from "styled-components";
 import rightElement from '../../assets/elements/right-element-light.svg';
 import leftElement from '../../assets/elements/left-element-light.svg';
@@ -10,6 +10,7 @@ import darkleftElement from '../../assets/elements/left-element.svg';
 import { FiSun, FiMoon, FiPower } from 'react-icons/fi';
 import { useTask } from '../../hooks/task';
 import GithubUser from '../../components/GithubUser';
+import TextInput from '../../components/TextInput';
 
 function Home({ changeTheme }) {
   const [description, setTaskDescription] = useState("");
@@ -45,19 +46,23 @@ function Home({ changeTheme }) {
             </div>
 
             <div id="header-form">
-              <Input>
-                <label className="label-control" autoComplete="off" htmlFor="task-description">Descrição da tarefa</label>
-                <div className="input-container">
-                  <input value={description} id="task-description" onChange={e => setTaskDescription(e.target.value)} placeholder="Dê uma descrição da sua tarefa a fazer" type="text"/>
-                </div>
-              </Input>
+              <TextInput 
+                label="Descrição da tarefa"
+                value={description} 
+                name="description"
+                noMargin
+                onChange={e => setTaskDescription(e.target.value)} 
+                placeholder="Dê uma descrição da sua tarefa a fazer" 
+              />
 
-              <Input>
-                <label htmlFor="task-topic" autoComplete="off">Tópico</label>
-                <div className="input-container">
-                  <input value={topic} onChange={e => setTaskTopic(e.target.value)} placeholder="Ex: #ProjectUI" id="task-topic" type="text"/>
-                </div>
-              </Input>
+              <TextInput 
+                label="Tópico"
+                width={60}
+                value={topic} 
+                name="topic"
+                onChange={e => setTaskTopic(e.target.value)} 
+                placeholder="Ex: #ProjectUI" 
+              />
 
               <button disabled={description === "" || topic === ""} onClick={() => handleSubmit()}>
                 Adicionar

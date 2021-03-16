@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Container, Input } from './styles';
 
-function TextInput({prefixText, ...props}) {
+function TextInput({prefixText, width = 100, noMargin = false, ...props}) {
   return (
-    <Container>
+    <Container width={width} noMargin={noMargin}>
         <label className="label-control" autoComplete="off" htmlFor={props.name}>{ props.label }</label>
         <div className="input-container">
             {prefixText && prefixText}

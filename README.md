@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+<p align="center">
+  <img src="./src/assets/images/vialaser.png" href="https://github-stars-akinncar.vercel.app/">
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+  <a aria-label="" href="/LICENSE" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-success.svg?style=flat-square&color=33CC12" target="_blank" />
+  </a>
 
-## Available Scripts
+  <a aria-label="heroku" href="https://todo-vialaser-api.herokuapp.com/api/v1/" target="_blank">
+    <img alt="Deployed on Heroku" src="https://heroku-badge.herokuapp.com/?app=github-stars-api-akinncar" />
+  </a>
 
-In the project directory, you can run:
+  <a aria-label="vercel" href="https://todo-list-test.vercel.app/" target="_blank">
+    <img alt="Deployed on Vercel" src="https://therealsujitk-vercel-badge.vercel.app/?app=therealsujitk-vercel-badge" />
+  </a>
+</p>
 
-### `yarn start`
+<p align="center">
+  <a aria-label="try fortstatus" href="https://todo-list-test.vercel.app/"><b>Try in the Browser</b></a>
+</p>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Objective
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The objective of the project is to create a web application so that it is possible to create, update and filter tasks. Being able to filter by tasks done, to do or all. To register a task, it is necessary to inform the github username.
 
-### `yarn test`
+## Documentation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In the docs, you can see the [Installation](./docs/Installation.md) session to get started this project in your local machine, and also see the endpoints in [Rest API](./docs/RestAPI.md) session.
 
-### `yarn build`
+## Technologies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To develop this application, a monorepo was created with [Yarn Workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) to manage the Server and Client sides.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Core
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 
-### `yarn eject`
+### Server
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [Node](https://nodejs.org/en/)
+- [Express](https://expressjs.com/pt-br/)
+- [Docker](https://www.docker.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Heroku](https://www.heroku.com/)
+- [Heroku Postgres](heroku.com/postgres)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Client
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- [React](https://reactjs.org/)
+- [Styled Components](https://styled-components.com/)
+- [Vercel](https://vercel.com/)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### UI Design Interface
 
-## Learn More
+- [Figma](https://www.figma.com/proto/M7ZmtBomv0IVuSmQCYLzTW/To-do?node-id=76%3A0&scaling=min-zoom)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## License
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The app's source code is made available under the [MIT license](LICENSE). Some of the dependencies are licensed differently, with the BSD license, for example.
 
-### Code Splitting
+## Contact
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Pierre Boschetto - [Github](https://github.com/PierreBosch) - **[pierre.moota@gmail.com](mailto:pierre.moota@gmail.com)**
