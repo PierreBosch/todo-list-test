@@ -4,13 +4,13 @@ import axios from 'axios';
 const TaskContext = createContext();
 
 const TaskProvider = ({ children }) => {
-  const initialTasks = [];
-  const [tasks, setTasks] = useState(initialTasks);
+  const gihubUser = JSON.parse(localStorage.getItem('@Tasks:githubUser')) || "Foo";
+  const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [todoCounter, setTodoCounter] = useState(0);
   const [doneCounter, setDoneCounter] = useState(0);
   const [filterOption, setFilterOption] = useState(null);
-  const [githubUser, setGithubUser] = useState(null);
+  const [githubUser, setGithubUser] = useState(gihubUser);
   const [error, setError] = useState(null);
   const [step, setStep] = useState(1);
 
@@ -24,25 +24,24 @@ const TaskProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    api.get(`/tasks`)
+    api.get(`/tasks?author=${githubUser.name}`)
       .then(response => {
         setTasks(response.data.tasks)
         setLoading(false)
       });
-  }, []);
+  }, [githubUser.name]);
 
   useEffect(() => {
     if(step === 2) {
-      api.get(`/tasks`)
+      api.get(`/tasks?author=${githubUser.name}`)
       .then(response => {
         setDoneCounter(response.data.tasks.filter(task => task.done).length);
         setTodoCounter(response.data.tasks.filter(task => !task.done).length);
       });
     }
-  }, [tasks, step]);
+  }, [tasks, step, githubUser.name]);
 
   function getGithubUser(username) {
-     setError(null);
      axios.get(`https://api.github.com/users/${username}`)
       .then(response => {
         const user = { name: response.data.login, avatar_url: response.data.avatar_url };
@@ -52,9 +51,14 @@ const TaskProvider = ({ children }) => {
       }).catch(() => setError({type: 'githubuser', message: 'Usuário não encontrado'}));
   }
 
+  function logout() {
+    localStorage.removeItem('@Tasks:githubUser');
+    setStep(1);
+  }
+
   function filterTasks(done = null, filterDescription) {
     setLoading(true)
-    const filter = done !== null ? `?done=${done}` : ``;
+    const filter = done !== null ? `?done=${done}&author=${githubUser.name}` : `?author=${githubUser.name}`;
     setFilterOption(filterDescription);
 
     setTimeout(() => {
@@ -113,7 +117,7 @@ const TaskProvider = ({ children }) => {
   }
 
   return (
-    <TaskContext.Provider value={{step, error, setError, setStep, tasks, getGithubUser, githubUser, addTask, deleteTask,doneCounter, todoCounter, updateTask, changeTaskStatus, filterTasks, filterOption, loading }}>
+    <TaskContext.Provider value={{step, logout, error, setError, setStep, tasks, getGithubUser, githubUser, addTask, deleteTask,doneCounter, todoCounter, updateTask, changeTaskStatus, filterTasks, filterOption, loading }}>
       {children}
     </TaskContext.Provider>
   );

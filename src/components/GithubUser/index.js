@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useTask } from '../../hooks/task';
 import TextInput from '../TextInput';
-import { Container, Input } from './styles';
+import { Container } from './styles';
 
 function GithubUser() {
   const ref = useRef(null);
@@ -24,6 +24,7 @@ function GithubUser() {
         </Input> */}
 
         <TextInput 
+          prefixText="https://github.com/"
           label="Digite o usuário do seu github" 
           errorKey={"githubuser"} 
           error={error} 

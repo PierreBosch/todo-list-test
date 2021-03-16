@@ -9,7 +9,7 @@ import Modal from '../Modal';
 function CardList({ tasks }) {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [task, setTask] = useState(null);
-  const { loading } = useTask();
+  const { loading, deleteTask } = useTask();
 
   function handleOpenModal(task) {
     setTask(task);
@@ -20,7 +20,7 @@ function CardList({ tasks }) {
     {!loading ? (
       tasks.length > 0 ? (
         <>
-          {modalIsOpen && (<Modal task={task} modalIsOpen={modalIsOpen} closeModal={() => setModalIsOpen(false)} />)}
+          {modalIsOpen && (<Modal task={task} deleteTask={() => deleteTask(task.id)} modalIsOpen={modalIsOpen} closeModal={() => setModalIsOpen(false)} />)}
           <GridList>
             {tasks.map(task => (
               <CardItem updateTask={() => handleOpenModal(task)}  key={task.id} task={task} />

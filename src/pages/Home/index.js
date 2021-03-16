@@ -7,16 +7,15 @@ import rightElement from '../../assets/elements/right-element-light.svg';
 import leftElement from '../../assets/elements/left-element-light.svg';
 import darkrightElement from '../../assets/elements/right-element.svg';
 import darkleftElement from '../../assets/elements/left-element.svg';
-import { FiMoon, FiSun } from 'react-icons/fi';
+import { FiSun, FiMoon, FiPower } from 'react-icons/fi';
 import { useTask } from '../../hooks/task';
 import GithubUser from '../../components/GithubUser';
-import Modal from '../../components/Modal';
 
 function Home({ changeTheme }) {
   const [description, setTaskDescription] = useState("");
   const [topic, setTaskTopic] = useState("");
 
-  const { addTask, step, tasks, filterTasks, filterOption, doneCounter, todoCounter} = useTask();
+  const { addTask, step, tasks, filterTasks, logout, filterOption, doneCounter, todoCounter} = useTask();
   const theme = useContext(ThemeContext);
 
   function handleSubmit() {
@@ -37,6 +36,10 @@ function Home({ changeTheme }) {
                 <img src={vialaserLogo} alt="vialaser-logo"/>
                 <button onClick={() => changeTheme()}>
                   {theme.description === "dark" ? (<FiSun size={20} />) : (<FiMoon size={20} />)}
+                </button>
+
+                <button onClick={() => logout()}>
+                  <FiPower size={20} />
                 </button>
               </div>
             </div>

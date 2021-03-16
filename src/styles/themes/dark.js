@@ -8,7 +8,6 @@ export default {
         backgroundHeader: "#121214",
         scrollbarTrack: "#202024",
         scrollbar: "#121214",
-
         headerTitleColor: "#ffffff",
 
         buttonPrimary: "#0B753C",
@@ -48,7 +47,14 @@ export default {
         checkMarkDisableBackground: "#202222",
         checkMarkBackground: "#0B753C",
         checkMarkSvgColor: "#ffffff",
-        checkMarkDisableSvgColor: "#323433"
+        checkMarkDisableSvgColor: "#323433",
+
+        modalBackgroundColor: "rgb(32, 32, 36)",
+        modalTitleColor: "#ffffff",
+        modalButtonOutlineColor: "#ffffff",
+        modalButtonColor: "#ffffff",
+        sectionSeparatorColor: "rgb(40, 39, 46)",
+        modalCloseBackground: 'rgb(40, 39, 46)',
     }
 };
 

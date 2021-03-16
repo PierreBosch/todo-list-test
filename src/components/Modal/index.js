@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { FiX, FiAirplay } from 'react-icons/fi';
-import { Container, Input } from './styles';
-import { useTask } from '../../hooks/task';
+import { FiX } from 'react-icons/fi';
+import { Container } from './styles';
 import TextInput from '../TextInput';
 
-function Modal({ task, modalIsOpen, closeModal }) {
+function Modal({ task, modalIsOpen, closeModal, deleteTask, updateTask }) {
   const [fadeType, setFadeType] = useState(null);
   const [description, setTaskDescription] = useState(task.description || "");
   const [topic, setTaskTopic] = useState(task.topic || "");
-  const { updateTask } = useTask();
 
   useEffect(() => {
     if(modalIsOpen) {
@@ -36,6 +34,11 @@ function Modal({ task, modalIsOpen, closeModal }) {
 
   function handleClose() {
     setFadeType("fade-out");
+  }
+
+  function handleDelete() {
+    deleteTask(task.id);
+    handleClose();
   }
 
   return (
@@ -72,6 +75,10 @@ function Modal({ task, modalIsOpen, closeModal }) {
 
                 <button onClick={() => handleClose()} className="transparent">
                     CANCELAR
+                </button>
+
+                <button onClick={() => handleDelete()} className="btn-delete">
+                    DELETAR TAREFA
                 </button>
             </footer>
         </div>

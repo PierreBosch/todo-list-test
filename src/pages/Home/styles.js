@@ -159,6 +159,10 @@ export const Header = styled.header`
                 background: ${props => props.theme.colors.themeButtonBackgroundColor};
                 transition: all 200ms ease-in-out;
                 
+                + button {
+                    margin-left: 8px;
+                }
+
                 :hover {
                     background: ${props => darken(0.1, props.theme.colors.themeButtonBackgroundColor)};
                 }

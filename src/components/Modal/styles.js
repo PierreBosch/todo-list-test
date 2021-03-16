@@ -1,4 +1,4 @@
-import { darken, lighten } from 'polished';
+import { lighten } from 'polished';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -32,7 +32,7 @@ export const Container = styled.div`
         max-width: 768px;
         max-height: 90vh;
         padding: 33px;
-        background: rgb(32, 32, 36);
+        background: ${props => props.theme.colors.modalBackgroundColor};
         box-shadow: rgb(0 0 0 / 56%) 0px 5px 30px;
         border-radius: 5px;
         transform: translateY(20px);
@@ -45,12 +45,14 @@ export const Container = styled.div`
             font-size: 24px;
             font-weight: bold;
             margin-bottom: 1.33em;
+            color: ${props => props.theme.colors.modalTitleColor};
         }
 
         @media(max-width: 768px) {
             min-height: 100vh;
             transform: translateY(0px);
             padding: 24px;
+            border-radius: 0;
         }
     }
 
@@ -73,7 +75,7 @@ export const Container = styled.div`
     }
 
     .modal-close:hover {
-        background: rgb(40, 39, 46);
+        background: ${props => props.theme.colors.modalCloseBackground};
         color: rgb(255, 255, 255);
     }
 
@@ -90,7 +92,7 @@ export const Container = styled.div`
             height: 1px;
             position: absolute;
             top: 0px;
-            background-color: rgb(40, 39, 46);
+            background-color: ${props => props.theme.colors.sectionSeparatorColor};
         }
 
         form {
@@ -111,10 +113,11 @@ export const Container = styled.div`
         flex-direction: row-reverse;
         width: 100%;
         padding-top: 32px;
-        border-top: 1px solid rgb(40, 39, 46);
+        border-top: 1px solid ${props => props.theme.colors.sectionSeparatorColor};
 
         .transparent {
             background: transparent;
+            color: ${props => props.theme.colors.modalButtonOutlineColor};
         }
 
         button {
@@ -123,7 +126,7 @@ export const Container = styled.div`
             font-size: 12px;
             font-weight: bold;
             text-transform: uppercase;
-            color: rgb(255, 255, 255);
+            color: ${props => props.theme.colors.modalButtonColor};
             border: 2px solid ${props => props.theme.colors.buttonPrimary};
             border-radius: 5px;
             transition: background 0.2s ease 0s, border 0.2s ease 0s;
@@ -142,6 +145,24 @@ export const Container = styled.div`
             &:not(:disabled):hover {
                 background: ${props => lighten(0.1, props.theme.colors.buttonPrimary)};
                 border-color: ${props => lighten(0.1, props.theme.colors.buttonPrimary)};
+                color: ${props => props.theme.colors.modalButtonOutlineHoverColor};
+            }
+        }
+
+        .btn-delete {
+            border: 1px solid #e24343;
+            margin-right: auto;
+            background: #e24343;
+            
+            &:not(:disabled):hover {
+                background: ${lighten(0.1, "#e24343")};
+                border-color: ${lighten(0.1, "#e24343")};
+            }
+
+            @media(max-width: 768px) {
+                position: fixed;
+                bottom: 32px;
+                width: calc(100% - 48px);
             }
         }
 
@@ -158,66 +179,6 @@ export const Container = styled.div`
                     margin-right: 0;
                     margin-top: 16px;
                 }
-            }
-        }
-    }
-`;
-
-export const Input = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-right: 16px;
-    position: relative;
-    
-    + div {
-        margin-top: 24px;
-    }
-
-    > span{
-        color: #ce4545;
-        margin-top: 8px;
-        padding-left: 4px;
-        position: absolute;
-        bottom: -24px;
-    }
-
-    label {
-        align-self:flex-start;
-        color: ${props => props.theme.colors.label};
-        font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 12px;
-    }
-
-    div.input-container {
-        height: 56px;
-        width: 100%;
-        border-radius: 14px;
-        border: 1px solid ${props => props.theme.colors.inputBorder};
-        background-color: ${props => props.theme.colors.inputBackground};
-        display: flex;
-        align-items: center;
-        padding: 16px;
-
-        :focus-within {
-            background: ${props => darken(0.03, props.theme.colors.inputFocusBackground)};
-            border: 1px solid ${props => props.theme.colors.inputOutline};
-            transition: all 200ms ease-in-out;
-        }
-
-        input {
-            width: 100%;
-            background: transparent;
-            border: none;
-            outline: none;
-            height: 56px;
-            padding: 24px 24px 24px 8px;
-            color: ${props => props.theme.colors.inputColor};
-
-            ::placeholder {
-                color: ${props => props.theme.colors.placeholder};
             }
         }
     }

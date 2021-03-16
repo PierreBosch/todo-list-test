@@ -1,6 +1,5 @@
 import React from 'react';
 import CheckMark from '../CheckMark';
-import Modal from '../Modal';
 import { Card } from './styles';
 
 
@@ -8,10 +7,10 @@ function CardItem({ task, updateTask  }) {
   
      return (
           <>
-               <Card onClick={() => updateTask()} key={task.id} done={task.done}>
+               <Card done={task.done}>
                     <img src={task.avatar_url} alt="avatar"/>
 
-                    <div id="content">
+                    <div onClick={() => updateTask(task)} key={task.id} id="content">
                          <strong>#{task.topic}</strong>
 
                          <p className="content-description">{ task.description }</p>

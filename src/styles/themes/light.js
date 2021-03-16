@@ -9,10 +9,9 @@ export default {
         backgroundHeader: "#4DA747",
         scrollbarTrack: "#DBF9D9",
         scrollbar: "#3C7A38",
-
         headerTitleColor: "#ffffff",
 
-        buttonPrimary: "#478D42",
+        buttonPrimary: "#7C79EB",
         buttonColor: "#ffffff",
 
         gradientPrimary: "#ffffff",
@@ -31,23 +30,32 @@ export default {
         black: "#A5C1A2",
 
         label: "#DFFBDD",
+        labelDark: "#4DA747",
         placeholder: "#A2A7B7",
         inputBorder: "#B2E3AE",
         inputColor: "#717570",
-        inputOutline: "#478D42",
+        inputOutline: "#7C79EB",
         inputBackground: "#FFFFFF",
-        inputFocusBackground: "#F4F4F4",
+        inputFocusBackground: "#ffffff",
 
-        todoColor: "#D2840C",
+        todoColor: "#F5AC3D",
         doneColor: "#4BD88C",
-        allColor: "#3C7A38",
+        allColor: "#524EE8",
         filterOptionColor: "#ffffff",
-        filterOptionBorder: "#79b575",
-        filterOptionBackground: "#478D42",
+        filterOptionBorder: "#8986F8",
+        filterOptionBackground: "#7C79EB",
 
         checkMarkDisableBackground: "#D5F8D2",
         checkMarkBackground: "#4DA747",
         checkMarkSvgColor: "#ffffff",
-        checkMarkDisableSvgColor: "#BCE9B9"
+        checkMarkDisableSvgColor: "#BCE9B9",
+
+        modalBackgroundColor: "#ffffff",
+        modalTitleColor: "#478D42",
+        modalButtonOutlineColor: "#7C79EB",
+        modalButtonOutlineHoverColor: "#ffffff",
+        modalButtonColor: "#ffffff",
+        modalCloseBackground: '#7C79EB',
+        sectionSeparatorColor: "#BCE9B9",
     }
 };

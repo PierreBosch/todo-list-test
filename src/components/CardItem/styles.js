@@ -27,6 +27,11 @@ export const Card = styled.li`
     box-shadow: 0px 2px 3px ${props => props.theme.colors.shadowCard};
     position: relative;
     animation: ${slide} 400ms 0s both;
+    transition: box-shadow 0.15s ease-in-out;
+
+    :hover {
+        box-shadow: 0px 2px 10px ${props => props.theme.colors.shadowCard};
+    }
 
     img {
         box-shadow: 0px 0px 6px 5px ${props => props.theme.colors.avatarShadow};

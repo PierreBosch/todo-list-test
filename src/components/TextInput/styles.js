@@ -35,7 +35,7 @@ export const Container = styled.div`
     }
 
     label {
-        color: ${props => props.theme.colors.label};
+        color: ${props => props.theme.description === 'dark' ? props.theme.colors.label : props.theme.colors.labelDark};
         font-size: 14px;
         font-weight: 600;
         margin-bottom: 12px;
